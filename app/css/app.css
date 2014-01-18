@@ -28,3 +28,11 @@
   content: "";
   padding: 0;
 }
+
+.score {
+  text-align: center;
+}
+
+.game-choice {
+  text-align: center;
+}
