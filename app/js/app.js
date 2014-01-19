@@ -2,15 +2,23 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('RPSLS', [
-  'ngRoute',
-  'myApp.filters',
-  'myApp.services',
-  'myApp.directives',
-  'myApp.controllers'
-]).
-config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view1', {templateUrl: 'partials/partial1.html', controller: 'MyCtrl1'});
-  $routeProvider.when('/view2', {templateUrl: 'partials/partial2.html', controller: 'MyCtrl2'});
-  $routeProvider.otherwise({redirectTo: '/view1'});
-}]);
+var app = angular.module('RPSLS', []);
+
+
+function gameCtrl($scope) {
+    $scope.playerChoice = "";
+    $scope.computerChoice = "Lizard";
+    $scope.playerScore = 0;
+    $scope.computerScore = 0;
+
+    $scope.playGame = function() {
+        console.log($scope.playerChoice + $scope.computerChoice);
+        $scope.playerScore++;
+    };
+
+    $scope.resetGame = function() {
+        $scope.playerChoice = "";
+        $('a.close-reveal-modal').trigger('click');
+    };
+}
+

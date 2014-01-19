@@ -10,13 +10,13 @@
 
   <script src="lib/modernizr.js"></script>
 </head>
-<body>
+<body ng-controller="gameCtrl">
 
 <div class="row">
-  <div class="small-6 small-centered columns score">Score</div>
+  <div class="small-6 small-centered columns score"><h1>Score</h1></div>
   <div class="row">
-    <div class="small-3 small-offset-2 columns">Player: 0</div>
-    <div class="small-3 small-offset-2 columns">Computer: 0</div>
+    <div class="small-3 small-offset-2 columns"><h5>Player: {{playerScore}}</h5></div>
+    <div class="small-3 small-offset-2 columns"><h5>Computer: {{computerScore}}</h5></div>
   </div>
 </div>
 
@@ -25,14 +25,16 @@
 
 <div class="row">
   <div class="small-6 columns">
-    <h2 class="game-choice">Make Your Selection</h2>
-    <input type="radio" name="playerChoice" value="Rock" id="playerRock"><label for="playerRock">Rock</label><br>
-    <input type="radio" name="playerChoice" value="Paper" id="playerPaper"><label for="playerPaper">Paper</label><br>
-    <input type="radio" name="playerChoice" value="Scissors" id="playerScissors"><label for="playerScissors">Scissors</label><br>
-    <input type="radio" name="playerChoice" value="Lizard" id="playerLizard"><label for="playerLizard">Lizard</label><br>
-    <input type="radio" name="playerChoice" value="Spock" id="playerSpock"><label for="playerSpock">Spock</label><br>
-    <div class="game-choice">
-      <p><a href="#" class="small button">Shoot</a><br/>
+    <h2 class="text-center">Make Your Selection</h2>
+    <div class="panel">
+      <input type="radio" ng-model="playerChoice" value="Rock" id="playerRock"><label for="playerRock">Rock</label><br>
+      <input type="radio" ng-model="playerChoice" value="Paper" id="playerPaper"><label for="playerPaper">Paper</label><br>
+      <input type="radio" ng-model="playerChoice" value="Scissors" id="playerScissors"><label for="playerScissors">Scissors</label><br>
+      <input type="radio" ng-model="playerChoice" value="Lizard" id="playerLizard"><label for="playerLizard">Lizard</label><br>
+      <input type="radio" ng-model="playerChoice" value="Spock" id="playerSpock"><label for="playerSpock">Spock</label><br>
+      <div class="text-center">
+        <a href="#" class="small button" data-reveal-id="resultsModal" ng-click="playGame()">Shoot</a><br/>
+      </div>
     </div>
   </div>
 
@@ -41,13 +43,12 @@
   </div>
 </div>
 
-<div class="row">
 
-  <!-- <input type="radio" value="Rock" id="compRock"><label for="compRock">Rock</label>
-  <input type="radio" value="Paper" id="compPaper"><label for="compPaper">Paper</label>
-  <input type="radio" value="Scissors" id="compScissors"><label for="compScissors">Scissors</label>
-  <input type="radio" value="Lizard" id="compLizard"><label for="compLizard">Lizard</label>
-  <input type="radio" value="Spock" id="compSpock"><label for="compSpock">Spock</label> -->
+<div id="resultsModal" class="reveal-modal" data-reveal>
+  <h2>Winner!</h2>
+  <p class="lead">You played a <strong>{{playerChoice}}</strong>. Your opponent played <strong>{{computerChoice}}</strong>.</p>
+  <p><a href="#" class="small button" ng-click="resetGame()">Play Again?</a></p>
+  <a class="close-reveal-modal">&#215;</a>
 </div>
 
 
