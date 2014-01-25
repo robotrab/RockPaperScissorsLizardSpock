@@ -5,7 +5,7 @@
 var app = angular.module('RPSLS', ['RPSLS.filters']);
 
 
-function gameCtrl($scope) {
+app.controller("GameCtrl", function($scope) {
     $scope.playerChoice = "";
     $scope.computerChoice = "";
     $scope.playerScore = 0;
@@ -16,6 +16,7 @@ function gameCtrl($scope) {
     var gameChoices = [0,1,2,3,4];
 
     $scope.playGame = function() {
+        //ALERT IF PLAYER HASN'T MADE A CHOICE
         $scope.computerChoice = gameChoices[Math.floor(Math.random() * gameChoices.length)];
         var results = (5 + $scope.playerChoice - $scope.computerChoice) % 5;
         if (results == 1 || results == 3) {
@@ -33,9 +34,10 @@ function gameCtrl($scope) {
     };
 
     $scope.resetGame = function() {
-        //$scope.playerChoice = "";
-        //$scope.computerChoice = "";
+        $scope.playerChoice = "";
+        $scope.computerChoice = "";
         $('a.close-reveal-modal').trigger('click');
     };
-}
+});
+
 

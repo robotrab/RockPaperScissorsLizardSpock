@@ -10,7 +10,7 @@
 
   <script src="lib/modernizr.js"></script>
 </head>
-<body ng-controller="gameCtrl">
+<body ng-controller="GameCtrl">
 
 <div class="row">
   <div class="small-6 small-centered columns score"><h1>Score</h1></div>
@@ -28,14 +28,16 @@
   <div class="small-6 columns">
     <h2 class="text-center">Make Your Selection</h2>
     <div class="panel">
-      <input type="radio" ng-model="playerChoice" value="0" id="playerRock"><label for="playerRock">Rock</label><br>
-      <input type="radio" ng-model="playerChoice" value="1" id="playerPaper"><label for="playerPaper">Paper</label><br>
-      <input type="radio" ng-model="playerChoice" value="2" id="playerScissors"><label for="playerScissors">Scissors</label><br>
-      <input type="radio" ng-model="playerChoice" value="4" id="playerLizard"><label for="playerLizard">Lizard</label><br>
-      <input type="radio" ng-model="playerChoice" value="3" id="playerSpock"><label for="playerSpock">Spock</label><br>
-      <div class="text-center">
-        <a href="#" class="small button" data-reveal-id="resultsModal" ng-click="playGame()">Shoot</a><br/>
-      </div>
+      <form name="player">
+        <input type="radio" ng-model="playerChoice" value="0" id="playerRock" required><label for="playerRock">Rock</label><br>
+        <input type="radio" ng-model="playerChoice" value="1" id="playerPaper" required><label for="playerPaper">Paper</label><br>
+        <input type="radio" ng-model="playerChoice" value="2" id="playerScissors" required><label for="playerScissors">Scissors</label><br>
+        <input type="radio" ng-model="playerChoice" value="4" id="playerLizard" required><label for="playerLizard">Lizard</label><br>
+        <input type="radio" ng-model="playerChoice" value="3" id="playerSpock" required><label for="playerSpock">Spock</label><br>
+        <div class="text-center">
+          <button class="small button" data-reveal-id="resultsModal" ng-click="playGame()" ng-disabled="player.$invalid">Shoot</button><br/>
+        </div>
+      </form>
     </div>
   </div>
 
@@ -49,7 +51,7 @@
   <h2>{{result}}</h2>
   <p class="lead">You played <strong>{{playerChoice | parseResults}}</strong>. Your opponent played <strong>{{computerChoice | parseResults}}</strong>.</p>
   <p><a href="#" class="small button" ng-click="resetGame()">Play Again?</a></p>
-  <a class="close-reveal-modal">&#215;</a>
+  <a class="close-reveal-modal" ng-click="resetGame()">&#215;</a>
 </div>
 
 
