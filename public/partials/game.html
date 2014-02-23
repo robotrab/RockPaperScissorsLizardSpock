@@ -1,0 +1,73 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 score"><h1>Score</h1></div>
+    <div class="row">
+      <div class="col-sm-4 "><h5 class="text-center">Player: {{playerScore}}</h5></div>
+      <div class="col-sm-4 "><h5 class="text-center">Ties: {{ties}}</h5></div>
+      <div class="col-sm-4 "><h5 class="text-center">Computer: {{computerScore}}</h5></div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="panel panel-primary">
+        <div class="text-center panel-heading">Make Your Selection</div>
+        <div class="panel-body">
+          <form name="player">
+            <div class="radio">
+              <label>
+                <input type="radio" name="player1Choice" ng-model="playerChoice" value="0" id="playerRock" required>Rock
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="player1Choice" ng-model="playerChoice" value="1" id="playerPaper" required>Paper
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="player1Choice" ng-model="playerChoice" value="2" id="playerScissors" required>Scissors
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="player1Choice" ng-model="playerChoice" value="4" id="playerLizard" required>Lizard
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="player1Choice" ng-model="playerChoice" value="3" id="playerSpock" required>Spock
+              </label>
+            </div>
+            <button class="btn btn-primary btn-block" data-reveal-id="resultsModal" ng-click="playGame()" ng-disabled="player.$invalid">Shoot</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="panel panel-info">
+        <div class="text-center panel-heading">The computer is waiting...</div>
+        <div class="panel-body"></div>
+      </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="myModalContent.html">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" ng-click="resetGame()" aria-hidden="true">&times;</button>
+      <h2 class="modal-title">{{result}}</h2>
+    </div>
+    <div class="modal-body">
+      <p>You played <strong>{{playerChoice | parseResults}}</strong>. Your opponent played <strong>{{computerChoice | parseResults}}</strong>.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary btn-block" ng-click="resetGame()">Play Again?</button>
+    </div>
+  </div><!-- /.modal-content -->
+</script>
+
