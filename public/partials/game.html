@@ -1,60 +1,79 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-12 score"><h1>Score</h1></div>
-    <div class="row">
-      <div class="col-sm-4 "><h5 class="text-center">Player: {{playerScore}}</h5></div>
-      <div class="col-sm-4 "><h5 class="text-center">Ties: {{ties}}</h5></div>
-      <div class="col-sm-4 "><h5 class="text-center">Computer: {{computerScore}}</h5></div>
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li class="active"><a href="#">RPSLS</a></li>
+        <li><a href="#">Github</a></li>
+        <form class="navbar-form">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Name">
+          </div>
+          <button type="submit" class="btn btn-default">Play Online!</button>
+        </form>
+      </ul>
     </div>
-  </div>
 
-  <br>
-  <br>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12 score"><h1>Score</h1><hr></div>
 
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="panel panel-primary">
-        <div class="text-center panel-heading">Make Your Selection</div>
-        <div class="panel-body">
-          <form name="player">
-            <div class="radio">
-              <label>
-                <input type="radio" name="player1Choice" ng-model="playerChoice" value="0" id="playerRock" required>Rock
-              </label>
+            <div class="row">
+              <div class="col-sm-4 "><h5 class="text-center">Player: {{playerScore}}</h5></div>
+              <div class="col-sm-4 "><h5 class="text-center">Ties: {{ties}}</h5></div>
+              <div class="col-sm-4 "><h5 class="text-center">Computer: {{computerScore}}</h5></div>
             </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="player1Choice" ng-model="playerChoice" value="1" id="playerPaper" required>Paper
-              </label>
+        </div>
+
+        <br>
+        <br>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="panel panel-primary">
+              <div class="text-center panel-heading">Make Your Selection</div>
+              <div class="panel-body">
+                <form name="player">
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="player1Choice" ng-model="playerChoice" value="0" id="playerRock" required>Rock
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="player1Choice" ng-model="playerChoice" value="1" id="playerPaper" required>Paper
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="player1Choice" ng-model="playerChoice" value="2" id="playerScissors" required>Scissors
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="player1Choice" ng-model="playerChoice" value="4" id="playerLizard" required>Lizard
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="player1Choice" ng-model="playerChoice" value="3" id="playerSpock" required>Spock
+                    </label>
+                  </div>
+                  <button class="btn btn-primary btn-block" data-reveal-id="resultsModal" ng-click="playGame()" ng-disabled="player.$invalid">Shoot</button>
+                </form>
+              </div>
             </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="player1Choice" ng-model="playerChoice" value="2" id="playerScissors" required>Scissors
-              </label>
+          </div>
+
+          <div class="col-sm-6">
+            <div class="panel panel-info">
+              <div class="text-center panel-heading">The computer is waiting...</div>
+              <div class="panel-body"></div>
             </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="player1Choice" ng-model="playerChoice" value="4" id="playerLizard" required>Lizard
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="player1Choice" ng-model="playerChoice" value="3" id="playerSpock" required>Spock
-              </label>
-            </div>
-            <button class="btn btn-primary btn-block" data-reveal-id="resultsModal" ng-click="playGame()" ng-disabled="player.$invalid">Shoot</button>
-          </form>
+          </div>
         </div>
       </div>
     </div>
-
-    <div class="col-sm-6">
-      <div class="panel panel-info">
-        <div class="text-center panel-heading">The computer is waiting...</div>
-        <div class="panel-body"></div>
-      </div>
-    </div>
-</div>
 
 <script type="text/ng-template" id="myModalContent.html">
   <div class="modal-content">
